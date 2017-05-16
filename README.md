@@ -1,2 +1,2 @@
 # NANOSIC_IDE
-Eclipse plugins for Nanosic MCU.
+Eclipse plugins for telink-semi MCU.
