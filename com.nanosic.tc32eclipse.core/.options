@@ -1,4 +1,0 @@
-com.nanosic.tc32eclipse.core/debug = true
-com.nanosic.tc32eclipse.core/debug/ui = true
-com.nanosic.tc32eclipse.core/debug/managedbuild = true
-com.nanosic.tc32eclipse.core/debug/core = true
