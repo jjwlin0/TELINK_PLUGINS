@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.nanosic.tc32eclipse;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-ClassPath: com.nanosic.tc32eclipse
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy

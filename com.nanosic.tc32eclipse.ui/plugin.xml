@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.3"?>
+<plugin>
+<!-- 
+####################################################################################### 
+####################################################################################### 
+##                                                                                   ##
+##   Extension Points                                                                ## 
+##                                                                                   ##
+####################################################################################### 
+####################################################################################### 
+-->
+
+
+
+####################################################################################### 
+####################################################################################### 
+##                                                                                   ##
+##   User Interface                                                                  ## 
+##                                                                                   ##
+####################################################################################### 
+####################################################################################### 
+-->
+<!--
+####################################################################################### 
+#    Preference Initializer                                                           # 
+####################################################################################### 
+-->
+	<extension point="org.eclipse.core.runtime.preferences">
+		<initializer
+			class="com.nanosic.tc32eclipse.core.preferences.PreferenceInitializer">
+		</initializer>
+	</extension>
+
+
+<!--
+####################################################################################### 
+#    TC32 Plugin Commands                                                             # 
+####################################################################################### 
+-->
+	<extension point="org.eclipse.ui.commands">
+		<category
+			name="nanosic Toolset"
+			description="nanosic Toolset"
+			id="com.nanosic.tc32eclipse.commands" />
+		<command
+
+        categoryId="com.nanosic.tc32eclipse.commands"
+        defaultHandler="com.nanosic.tc32eclipse.ui.commands.RunTDebug"
+        description="nanosic Debugger"
+        id="com.nanosic.tc32eclipse.commands.tdebug"
+        name="nanosic Debugger"/> 
+		<command
+
+        categoryId="com.nanosic.tc32eclipse.commands"
+        defaultHandler="com.nanosic.tc32eclipse.ui.commands.RunTCDB"
+        description="nanosic Binary Loader"
+        id="com.nanosic.tc32eclipse.commands.tcdb"
+        name="nanosic Progammer"/>
+		<command
+
+        categoryId="com.nanosic.tc32eclipse.commands"
+        defaultHandler="com.nanosic.tc32eclipse.ui.commands.RunRFScan"
+        description="nanosic RF Scanner"
+        id="com.nanosic.tc32eclipse.commands.rfscan"
+        name="nanosic RF Scanner"/>
+  <command
+
+        categoryId="com.nanosic.tc32eclipse.commands"
+        defaultHandler="com.nanosic.tc32eclipse.ui.commands.RunGPIOCfg"
+        description="nanosic GPIO Config"
+        id="com.nanosic.tc32eclipse.commands.gpiocfg"
+        name="nanosic GPIO Config">
+  </command>
+  <command
+
+        categoryId="com.nanosic.tc32eclipse.commands"
+        defaultHandler="com.nanosic.tc32eclipse.ui.commands.RunWTCDB"
+        description="nanosic Tool Center"
+        id="com.nanosic.tc32eclipse.commands.wtcdb"
+        name="nanosic WTCDB">
+  </command>
+	</extension>
+
+<!--
+####################################################################################### 
+#    Key Bindings                                                                     # 
+####################################################################################### 
+-->
+
+
+<!--
+####################################################################################### 
+#    Action Sets (Toolbar & Main Menu)                                                # 
+####################################################################################### 
+##	<extension point="org.eclipse.ui.actionSets">
+        visible="true">
+-->
+
+<extension point="org.eclipse.ui.menus">
+	<menuContribution
+       allPopups="false"
+       locationURI="toolbar:org.eclipse.ui.main.toolbar"> 
+	    <toolbar 
+	         id="com.nanosic.tc32eclipse.commands.toolbar1"> 
+	      <command
+             commandId="com.nanosic.tc32eclipse.commands.wtcdb"
+             icon="icons/wt.gif"
+             id="com.nanosic.tc32eclipse.commands.tool_wtcdb"
+             tooltip="nanosic Tool Center"> 
+	      </command>
+	      <command
+             commandId="com.nanosic.tc32eclipse.commands.tcdb"
+             icon="icons/flash64.png"
+             id="com.nanosic.tc32eclipse.commands.tool_tcdb"
+             tooltip="nanosic Binary Loader"> 
+	      </command>
+	        
+	   </toolbar>
+	</menuContribution>
+ <menuContribution
+       allPopups="false"
+       locationURI="menu:org.eclipse.ui.main.menu">
+    <menu
+          icon="icons/viewer16/dummy.png"
+          label="NANOSIC">
+       <command
+             commandId="com.nanosic.tc32eclipse.commands.tcdb"
+             icon="icons/flash64.png"
+             label="nanosic Binary Loader"
+             style="push"
+             tooltip="nanosic Binary Loader">
+       </command> 
+       <command
+             commandId="com.nanosic.tc32eclipse.commands.wtcdb"
+             icon="icons/wt.gif"
+             label="nanosic WTCDB"
+             style="push"
+             tooltip="nanosic Tool Center">
+       </command>       
+    </menu>
+ </menuContribution>
+</extension>
+
+
+	
+<!-- make this as default C perspective 
+	<extension point="org.eclipse.ui.perspectiveExtensions">
+		<perspectiveExtension
+			targetID="org.eclipse.cdt.ui.CPerspective">
+			<actionSet id="com.nanosic.tc32eclipse.actionset.tcdb" />
+		</perspectiveExtension>
+		
+	</extension>
+-->
+   	
+<!--
+####################################################################################### 
+#    Popup Menues (Context Menues)                                                    # 
+####################################################################################### 
+
+	<extension point="org.eclipse.ui.popupMenus">
+		<objectContribution
+			objectClass="org.eclipse.core.resources.IProject"
+			adaptable="true"
+			id="com.nanosic.tc32eclipse.menu.popup.tcdb">
+			<menu
+             icon="icons/tc32_app.png"
+             id="com.nanosic.tc32eclipse.menu.popup.tcdb"
+             label="Telink Loader">
+			 <separator name="tcdb"></separator>
+			</menu>
+			<action
+				class="com.nanosic.tc32eclipse.ui.commands.TCDBProjectAction"
+				enablesFor="1" id="com.nanosic.tc32eclipse.actions.projectupload"
+				label="Download binary to Telink device."
+				menubarPath="com.nanosic.tc32eclipse.menu.popup.TC32/download">
+			</action>
+			<visibility>
+				<objectState name="projectNature"
+					value="com.nanosic.tc32eclipse.core.TC32nature">
+				</objectState>
+			</visibility>
+		</objectContribution>
+	</extension>
+-->
+
+<!--
+####################################################################################### 
+#    Preference Pages                                                                 # 
+####################################################################################### 
+-->
+	<extension point="org.eclipse.ui.preferencePages">
+		<page name="nanosic Tools"
+			class="com.nanosic.tc32eclipse.ui.preferences.MainPreferencePage"
+			id="com.nanosic.tc32eclipse.preferences.PreferencePage">
+		</page>
+		<page name="Toolchain Paths"
+			category="com.nanosic.tc32eclipse.preferences.PreferencePage"
+			class="com.nanosic.tc32eclipse.ui.preferences.PathsPreferencePage"
+			id="com.nanosic.tc32eclipse.preferences.PathsPreferencePage">
+		</page>
+		<page name="nanosic Loader"
+			category="com.nanosic.tc32eclipse.preferences.PreferencePage"
+			class="com.nanosic.tc32eclipse.ui.preferences.TCDBPreferencePage"
+			id="com.nanosic.tc32eclipse.preferences.TCDBPreferencePage">
+		</page>
+	</extension>
+
+
+## turn back on
+####################################################################################### 
+#    Property Pages                                                                   # 
+####################################################################################### 
+	<extension point="org.eclipse.ui.propertyPages">
+		<!-- ############################### -->
+		<!-- Main Telink Tools  Properties Page       -->
+		<!-- ############################### -->
+		<page
+            class="com.nanosic.tc32eclipse.ui.propertypages.PageMain"
+            id="com.nanosic.tc32eclipse.propertypage.nanosictools"
+            name="nanosic Tools" >
+			<filter
+				name="projectNature"
+				value="com.nanosic.tc32eclipse.core.TC32nature">
+			</filter>            
+			<enabledWhen>
+				<or>
+					<instanceof value="org.eclipse.core.resources.IProject"/>
+					<instanceof value="org.eclipse.cdt.core.model.ICProject"/>
+				</or>          
+			</enabledWhen>
+        </page>      
+
+		<!-- ############################### -->
+		<!-- Telink TCDB Loader Properties Page         -->
+		<!-- ############################### -->
+		<page
+            class="com.nanosic.tc32eclipse.ui.propertypages.PageTCDB"
+            id="com.nanosic.tc32eclipse.propertypage.tcdb"
+            name="nanosic Loader"
+            category="com.nanosic.tc32eclipse.propertypage.nanosictools" >
+	           
+			<enabledWhen>
+				<and>
+					<or>
+						<instanceof value="org.eclipse.core.resources.IProject"/>
+						<instanceof value="org.eclipse.cdt.core.model.ICProject"/>
+					</or> 
+					<!-- not> -->
+					<!-- 	<test property="com.nanosic.tc32eclipse.core.isStaticLib" /> -->
+					<!-- </not> -->
+				</and>         
+			</enabledWhen>
+        </page>    
+		<!-- 
+		<page
+            class="com.nanosic.tc32eclipse.ui.propertypages.PageTCDBStaticLib"
+            id="com.nanosic.tc32eclipse.propertypage.tcdb.staticlib"
+            name="TC32Tools"
+            category="com.nanosic.tc32eclipse.propertypage.TC32main" >
+			<filter
+				name="projectNature"
+				value="com.nanosic.tc32eclipse.core.TC32nature">
+			</filter>            
+			<enabledWhen>
+				<and>
+					<or>
+						<instanceof value="org.eclipse.core.resources.IProject"/>
+						<instanceof value="org.eclipse.cdt.core.model.ICProject"/>
+					</or> 
+					<test property="com.nanosic.tc32eclipse.core.isStaticLib" />
+				</and>         
+			</enabledWhen>
+        </page>    
+		-->
+	</extension>
+	
+	
+<!--
+####################################################################################### 
+#    Property Page Tabs                                                               # 
+####################################################################################### 
+-->
+	<extension
+		point="org.eclipse.cdt.ui.cPropertyTab">
+		
+
+		<!-- #### TCDB/Avanced Tab #### -->
+		<tab
+			class="com.nanosic.tc32eclipse.ui.propertypages.TabTCDBAdvanced"
+			icon="icons/tc.gif"
+			name="Loader Options"
+			weight="005"
+			parent="com.nanosic.tc32eclipse.ui.propertypages.PageTCDB"/>
+	</extension>
+
+
+
+<!--
+####################################################################################### 
+#    Views                                                                            # 
+####################################################################################### 
+--> 
+
+
+</plugin>

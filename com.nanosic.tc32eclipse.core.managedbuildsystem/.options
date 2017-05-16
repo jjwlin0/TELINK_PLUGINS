@@ -1,0 +1,2 @@
+# Control if trace messages are shown.
+com.nanosic.tc32eclipse.core.managedbuildsystem/debug=false

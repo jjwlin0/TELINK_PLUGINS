@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.nanosic.tc32eclipse.all.feature_0.0.01.qualifier.jar" id="com.nanosic.tc32eclipse.all.feature" version="0.0.1.qualifier">
+      <category name="com.nanosic.TC32Plugins.category"/>
+   </feature>
+   <category-def name="com.nanosic.TC32Plugins.category" label="IOT C Cross Development Tools"/>
+</site>
